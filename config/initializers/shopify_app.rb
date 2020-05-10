@@ -1,7 +1,10 @@
+_creds = Rails.application.credentials
+shopify_creds = _creds[:shopify]
+
 ShopifyApp.configure do |config|
   config.application_name = "My Shopify App"
-  config.api_key = ENV['SHOPIFY_API_KEY']
-  config.secret = ENV['SHOPIFY_API_SECRET']
+  config.api_key = shopify_creds[:api_key]
+  config.secret = shopify_creds[:secret]
   config.old_secret = ""
   config.scope = "read_products" # Consult this page for more scope options:
                                  # https://help.shopify.com/en/api/getting-started/authentication/oauth/scopes
